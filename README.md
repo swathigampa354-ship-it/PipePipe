@@ -1,6 +1,6 @@
 <hr>
 <p align="center"><img src="assets/logo.png" width="150"></p> 
-<h2 align="center"><b>PipePipe</b></h2>
+<h2 align="center"><b># PipePipe (YouTube‑only)</b></h2>
 <h4 align="center">
 NewPipe, reimagined: faster, more stable, and packed with more features.</h4>
 <p align="center"><a href="https://f-droid.org/packages/InfinityLoop1309.NewPipeEnhanced/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid"  width="207" /></a>
@@ -61,13 +61,13 @@ NewPipe, reimagined: faster, more stable, and packed with more features.</h4>
 
 Due to differences in development philosophy, I forked NewPipe in early 2022 and began independent development based on it.
 
-This means that PipePipe neither receives updates from NewPipe nor pushes updates to NewPipe. They have become two separate projects. Issues that occur in NewPipe don't necessarily happen in PipePipe, and changes made in NewPipe may not be adopted by PipePipe. In contrast, forks like Tubular track the latest version of NewPipe and develop based on it.
+This means that # PipePipe (YouTube‑only) neither receives updates from NewPipe nor pushes updates to NewPipe. They have become two separate projects. Issues that occur in NewPipe don't necessarily happen in # PipePipe (YouTube‑only), and changes made in NewPipe may not be adopted by # PipePipe (YouTube‑only). In contrast, forks like Tubular track the latest version of NewPipe and develop based on it.
 
 Making a hard fork allows us to effectively address issues with quick fixes and maintain frequent feature updates.
 
 ## About sign in
 
-PipePipe will ONLY use the login cookie for the specified scenarios you set. You can configure it in "Cookie Functions."
+# PipePipe (YouTube‑only) will ONLY use the login cookie for the specified scenarios you set. You can configure it in "Cookie Functions."
 
 For YouTube, the cookie will only be used when retrieving playback streams.
 
@@ -79,18 +79,18 @@ Anyone interested in creating their own service is encouraged to fork this repos
 
 ## Donation
 
-If you find PipePipe useful, please consider becoming a supporter on Ko-Fi. Your support is important to me and helps me add more exciting new features. Every bit counts! 😇
+If you find # PipePipe (YouTube‑only) useful, please consider becoming a supporter on Ko-Fi. Your support is important to me and helps me add more exciting new features. Every bit counts! 😇
 
-Liberapay: https://liberapay.com/PipePipe
+Liberapay: https://liberapay.com/# PipePipe (YouTube‑only)
 
 Ko-fi: https://ko-fi.com/pipepipe
 
 ## Community
 
-[PipePipe Wiki](https://priveetee.github.io/Docs-PipePipe) maintained by [@Priveetee](https://github.com/Priveetee)
+[# PipePipe (YouTube‑only) Wiki](https://priveetee.github.io/Docs-# PipePipe (YouTube‑only)) maintained by [@Priveetee](https://github.com/Priveetee)
 
 ## Special Thanks
 
-[Priveetee](https://github.com/Priveetee) for [researching SABR](https://priveetee.github.io/Docs-PipePipe/developer-guide/introduction.html) and implementing support for it.
+[Priveetee](https://github.com/Priveetee) for [researching SABR](https://priveetee.github.io/Docs-# PipePipe (YouTube‑only)/developer-guide/introduction.html) and implementing support for it.
 
 [AioiLight](https://github.com/AioiLight) for providing some code of NicoNico service.
