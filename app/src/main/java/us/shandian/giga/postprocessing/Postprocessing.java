@@ -54,12 +54,6 @@ public abstract class Postprocessing implements Serializable {
             case ALGORITHM_OGG_FROM_WEBM_DEMUXER:
                 instance = new OggFromWebmDemuxer();
                 break;
-            case BILIBILI_MUXER:
-                instance = new BiliBiliMp4Muxer();
-                break;
-            case NICONICO_MUXER:
-                instance = new NicoNicoMuxer();
-                break;
             /*case "example-algorithm":
                 instance = new ExampleAlgorithm();*/
             default:
@@ -183,14 +177,7 @@ public abstract class Postprocessing implements Serializable {
                         };
 
 
-                        if (Objects.equals(target.psAlgorithm.name, NICONICO_MUXER)) {
-                            result = process(target.storage.source, target.context, out, sources);
-                            ((NicoNicoMuxer)this).download(target.storage.source, target.context, target.urls, mission);
-                        } else if (Objects.equals(target.psAlgorithm.name, BILIBILI_MUXER)) {
-                            result = ((BiliBiliMp4Muxer)this).mux(target.storage, target.context, out, sources);
-                        } else {
-                            result = process(target.storage.source, target.context, out, sources);
-                        }
+                        result = process(target.storage.source, target.context, out, sources);
 
                         if (result == OK_RESULT)
                             finalLength = out.finalizeFile();
