@@ -1051,9 +1051,9 @@ public class DownloadDialog extends DialogFragment
         if (checkedId3 == R.id.audio_button) {
             kind = 'a';
             selectedStream = audioStreamsAdapter.getItem(selectedAudioIndex);
-            if (currentInfo.getService() == ServiceList.NicoNico) {
+// NicoNico support removed – YouTube only
                 psName = Postprocessing.NICONICO_MUXER;
-            } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getService() != ServiceList.BiliBili) {
+            } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getService() != ServiceList.YouTube) {
                 psName = Postprocessing.ALGORITHM_M4A_NO_DASH;
             } else if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
                 psName = Postprocessing.ALGORITHM_OGG_FROM_WEBM_DEMUXER;
@@ -1069,9 +1069,9 @@ public class DownloadDialog extends DialogFragment
             if (secondary != null) {
                 secondaryStream = secondary.getStream();
 
-                if(currentInfo.getService() == ServiceList.BiliBili) {
+                if(currentInfo.getService() == ServiceList.YouTube) {
                     psName = Postprocessing.BILIBILI_MUXER;
-                } else if (currentInfo.getService() == ServiceList.NicoNico) {
+                } else // NicoNico support removed – YouTube only
                     psName = Postprocessing.NICONICO_MUXER;
                 } else {
                     if (selectedStream.getFormat() == MediaFormat.MPEG_4) {

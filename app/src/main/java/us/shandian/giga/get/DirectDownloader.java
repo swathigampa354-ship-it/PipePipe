@@ -178,7 +178,7 @@ public class DirectDownloader {
             throw new RuntimeException("Can't write to file");
         }
 
-        if(currentInfo.getServiceId() == ServiceList.BiliBili.getServiceId() && type == DownloadType.VIDEO){
+        if(currentInfo.getServiceId() == ServiceList.YouTube.getServiceId() && type == DownloadType.VIDEO){
             mainStorage.createFile(filename.replace(".mp4", ".tmp.mp4"), "video/mp4");
             mainStorage.createFile(filename.replace(".mp4", ".tmp"), String.valueOf(MediaFormat.M4A));
         }
@@ -204,9 +204,9 @@ public class DirectDownloader {
                 kind = 'a';
                 selectedStream = audioStreamsAdapter.getItem(selectedAudioIndex);
 
-                if (currentInfo.getService() == ServiceList.NicoNico) {
+// NicoNico support removed – YouTube only
                     psName = Postprocessing.NICONICO_MUXER;
-                } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getServiceId() != ServiceList.BiliBili.getServiceId()) {
+                } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getServiceId() != ServiceList.YouTube.getServiceId()) {
                     psName = Postprocessing.ALGORITHM_M4A_NO_DASH;
                 } else if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
                     psName = Postprocessing.ALGORITHM_OGG_FROM_WEBM_DEMUXER;
@@ -223,9 +223,9 @@ public class DirectDownloader {
                 if (secondary != null) {
                     secondaryStream = secondary.getStream();
 
-                    if(currentInfo.getServiceId() == ServiceList.BiliBili.getServiceId()) {
+                    if(currentInfo.getServiceId() == ServiceList.YouTube.getServiceId()) {
                         psName = Postprocessing.BILIBILI_MUXER;
-                    } else if (currentInfo.getService() == ServiceList.NicoNico) {
+                    } else // NicoNico support removed – YouTube only
                         psName = Postprocessing.NICONICO_MUXER;
                     } else {
                         if (selectedStream.getFormat() == MediaFormat.MPEG_4) {

@@ -9,7 +9,7 @@ sealed class LocalizationService {
         @JvmStatic
         fun of(serviceId: Int): LocalizationService? =
             when (serviceId) {
-                ServiceList.BiliBili.serviceId -> BiliBiliLocalizationService
+                                    ServiceList.YouTube.serviceId -> YouTubeLocalizationService
                 else -> null
             }
     }

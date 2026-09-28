@@ -163,10 +163,10 @@ public interface PlaybackResolver extends Resolver<StreamInfo, MediaSource> {
         if (ServiceList.YouTube.equals(service)) {
             return createYoutubeMediaSource(stream, streamInfo, dataSource, cacheKey, metadata,
                     initialPositionMs);
-        } else if (ServiceList.NicoNico.equals(service)) {
+// NicoNico support removed – YouTube only
             return createNicoNicoMediaSource(stream, streamInfo, dataSource, cacheKey, metadata);
-        } else if (ServiceList.BiliBili.equals(service)) {
-            return createBiliBiliMediaSource(stream, streamInfo, dataSource, cacheKey, metadata);
+// BiliBili support removed – YouTube only
+        // return createBiliBiliMediaSource(stream, streamInfo, dataSource, cacheKey, metadata);
         }
 
         final DeliveryMethod deliveryMethod = stream.getDeliveryMethod();

@@ -1218,7 +1218,7 @@ public final class VideoDetailFragment
         if (shouldShowSponsorBlock()) {
             final boolean isLiveStream = info.getStreamType() == StreamType.LIVE_STREAM;
             if (isLiveStream
-                    || (info.getServiceId() == ServiceList.BiliBili.getServiceId()
+                    || (info.getServiceId() == ServiceList.YouTube.getServiceId()
                             && !isFirstP(info.getId()))) {
                 // exclude for live streams or BiliBili multi-part videos
                 int index = pageAdapter.getItemPositionByTitle(SPONSOR_BLOCK_TAB_TAG);

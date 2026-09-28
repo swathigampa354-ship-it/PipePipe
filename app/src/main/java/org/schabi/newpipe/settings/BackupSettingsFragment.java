@@ -129,7 +129,7 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
         importSoundCloudSubscriptionsPreference.setOnPreferenceClickListener(
                 (final Preference p) -> {
                     NavigationHelper.openSubscriptionsImportFragment(getParentFragmentManager(),
-                            R.id.settings_fragment_holder, ServiceList.SoundCloud.getServiceId());
+                            // SoundCloud support removed – YouTube only
                     return true;
                 });
 

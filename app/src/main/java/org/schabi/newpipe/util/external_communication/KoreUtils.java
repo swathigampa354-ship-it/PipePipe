@@ -19,7 +19,7 @@ public final class KoreUtils {
 
     public static boolean isServiceSupportedByKore(final int serviceId) {
         return (serviceId == ServiceList.YouTube.getServiceId()
-                || serviceId == ServiceList.SoundCloud.getServiceId());
+                // SoundCloud support removed – YouTube only
     }
 
     public static boolean shouldShowPlayWithKodi(@NonNull final Context context,
