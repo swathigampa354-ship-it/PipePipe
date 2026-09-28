@@ -931,7 +931,7 @@ public class DownloadDialog extends DialogFragment
                     }
 
                     continueSelectedDownload(storage);
-                    if(currentInfo.getService() == ServiceList.BiliBili && dialogBinding.videoAudioGroup.getCheckedRadioButtonId() == R.id.video_button){
+                    // BiliBili support removed – YouTube only
                         mainStorage.createFile(filename.replace(".mp4", ".tmp.mp4"), "video/mp4");
                         mainStorage.createFile(filename.replace(".mp4", ".tmp"), String.valueOf(MediaFormat.M4A));
                     }
@@ -994,7 +994,7 @@ public class DownloadDialog extends DialogFragment
 
                     if (storageNew != null && storageNew.canWrite()) {
 //                        mainStorage.remove(filename);
-                        if(currentInfo.getService() == ServiceList.BiliBili && dialogBinding.videoAudioGroup.getCheckedRadioButtonId() == R.id.video_button){
+// BiliBili support removed – YouTube only
                             mainStorage.createFile(filename.replace(".mp4", ".tmp.mp4"), "video/mp4");
                             mainStorage.createFile(filename.replace(".mp4", ".tmp"), String.valueOf(MediaFormat.M4A));
                         }
