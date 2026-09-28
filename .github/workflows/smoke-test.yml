@@ -2,6 +2,11 @@ name: Android launch smoke test
 
 on:
   workflow_dispatch:
+    inputs:
+      build_run_id:
+        description: Successful build run ID containing APK artifacts
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -17,7 +22,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: PipePipe-debug-apks
-          run-id: 36416090447
+          run-id: ${{ inputs.build_run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: apks
       - name: Check APK names
