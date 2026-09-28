@@ -991,7 +991,7 @@
 <string name="export_subscriptions_summary">Abonnements in eine JSON-Datei exportieren</string>
 <string name="import_youtube_subscriptions_title">Von YouTube importieren</string>
 <string name="import_youtube_subscriptions_summary">Abonnements aus Google Takeout importieren</string>
-<string name="import_soundcloud_subscriptions_title">Von SoundCloud importieren</string>
+<!-- SoundCloud import UI removed – YouTube only -->
 <string name="import_soundcloud_subscriptions_summary">Abonnements von einem SoundCloud-Profil importieren</string>
 <string name="clear_subscriptions_title">Abonnements löschen</string>
 <string name="clear_subscriptions_summary">Alle abonnierten Kanäle aus PipePipe entfernen</string>
