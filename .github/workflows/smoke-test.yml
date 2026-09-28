@@ -36,9 +36,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           script: |
-            APK=$(find apks -name '*x86_64*.apk' -print -quit)
-            test -n "$APK"
-            adb install "$APK"
+            adb install "$(find apks -name '*x86_64*.apk' -print -quit)"
             adb logcat -c
             adb shell am start -n InfinityLoop1309.NewPipeEnhanced.debug/org.schabi.newpipe.MainActivity
             sleep 18
