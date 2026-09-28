@@ -27,7 +27,7 @@ import org.schabi.newpipe.extractor.exceptions.NeedLoginException
 import org.schabi.newpipe.extractor.exceptions.PaidContentException
 import org.schabi.newpipe.extractor.exceptions.PrivateContentException
 import org.schabi.newpipe.extractor.exceptions.ReCaptchaException
-import org.schabi.newpipe.extractor.exceptions.SoundCloudGoPlusContentException
+// SoundCloud support removed – YouTube only
 import org.schabi.newpipe.extractor.exceptions.WebViewUnavailableException
 import org.schabi.newpipe.extractor.exceptions.YoutubeMusicPremiumContentException
 import org.schabi.newpipe.extractor.utils.Utils.isNullOrEmpty
@@ -220,7 +220,7 @@ class ErrorPanelHelper(
                 is GeographicRestrictionException -> R.string.georestricted_content
                 is PaidContentException -> R.string.paid_content_new
                 is PrivateContentException -> R.string.private_content_new
-                is SoundCloudGoPlusContentException -> R.string.soundcloud_go_plus_content_new
+                // SoundCloud support removed – YouTube only
                 is YoutubeMusicPremiumContentException -> R.string.youtube_music_premium_content_new
                 is WebViewUnavailableException -> R.string.webview_unavailable_youtube_hint
                 is ContentNotAvailableException -> R.string.content_not_available

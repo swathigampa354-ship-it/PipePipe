@@ -18,7 +18,7 @@ public final class KoreUtils {
     private KoreUtils() { }
 
     public static boolean isServiceSupportedByKore(final int serviceId) {
-        return (serviceId == ServiceList.YouTube.getServiceId()
+        return (serviceId == ServiceList.YouTube.getServiceId());
                 // SoundCloud support removed – YouTube only
     }
 

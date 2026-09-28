@@ -124,7 +124,7 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
             return true;
         });
 
-        final Preference importSoundCloudSubscriptionsPreference =
+        // SoundCloud support removed – YouTube only
                 requirePreference(R.string.import_soundcloud_subscriptions_key);
         importSoundCloudSubscriptionsPreference.setOnPreferenceClickListener(
                 (final Preference p) -> {
