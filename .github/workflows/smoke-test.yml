@@ -1,0 +1,57 @@
+name: Android launch smoke test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download last built APKs
+        uses: actions/download-artifact@v4
+        with:
+          name: PipePipe-debug-apks
+          run-id: 36416090447
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: apks
+      - name: Check APK names
+        run: ls -lh apks
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Launch app on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: |
+            APK=$(find apks -name '*x86_64*.apk' -print -quit)
+            test -n "$APK"
+            adb install "$APK"
+            adb logcat -c
+            adb shell am start -n InfinityLoop1309.NewPipeEnhanced.debug/org.schabi.newpipe.MainActivity
+            sleep 18
+            echo '=== CRASH LOG ==='
+            adb logcat -d -b crash | tee crash-log.txt
+            echo '=== APP PROCESS ==='
+            adb shell pidof InfinityLoop1309.NewPipeEnhanced.debug || true
+            if grep -q 'FATAL EXCEPTION' crash-log.txt; then exit 1; fi
+            adb shell pidof InfinityLoop1309.NewPipeEnhanced.debug
+      - name: Upload crash log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-startup-log
+          path: crash-log.txt
+          if-no-files-found: ignore
