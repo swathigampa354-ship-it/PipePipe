@@ -204,11 +204,7 @@ public class DirectDownloader {
                 kind = 'a';
                 selectedStream = audioStreamsAdapter.getItem(selectedAudioIndex);
 
-// NicoNico support removed – YouTube only
-                    psName = Postprocessing.NICONICO_MUXER;
-                } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getServiceId() != ServiceList.YouTube.getServiceId()) {
-                    psName = Postprocessing.ALGORITHM_M4A_NO_DASH;
-                } else if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
+                if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
                     psName = Postprocessing.ALGORITHM_OGG_FROM_WEBM_DEMUXER;
                 }
                 break;
@@ -223,11 +219,7 @@ public class DirectDownloader {
                 if (secondary != null) {
                     secondaryStream = secondary.getStream();
 
-                    if(currentInfo.getServiceId() == ServiceList.YouTube.getServiceId()) {
-                        psName = Postprocessing.BILIBILI_MUXER;
-                    } else // NicoNico support removed – YouTube only
-                        psName = Postprocessing.NICONICO_MUXER;
-                    } else {
+                    {
                         if (selectedStream.getFormat() == MediaFormat.MPEG_4) {
                             psName = Postprocessing.ALGORITHM_MP4_FROM_DASH_MUXER;
                         } else {

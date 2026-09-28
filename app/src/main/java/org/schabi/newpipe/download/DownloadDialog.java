@@ -931,10 +931,6 @@ public class DownloadDialog extends DialogFragment
                     }
 
                     continueSelectedDownload(storage);
-                    // BiliBili support removed – YouTube only
-                        mainStorage.createFile(filename.replace(".mp4", ".tmp.mp4"), "video/mp4");
-                        mainStorage.createFile(filename.replace(".mp4", ".tmp"), String.valueOf(MediaFormat.M4A));
-                    }
                     return;
                 }
                 msgBtn = R.string.overwrite;
@@ -994,10 +990,6 @@ public class DownloadDialog extends DialogFragment
 
                     if (storageNew != null && storageNew.canWrite()) {
 //                        mainStorage.remove(filename);
-// BiliBili support removed – YouTube only
-                            mainStorage.createFile(filename.replace(".mp4", ".tmp.mp4"), "video/mp4");
-                            mainStorage.createFile(filename.replace(".mp4", ".tmp"), String.valueOf(MediaFormat.M4A));
-                        }
                         continueSelectedDownload(storageNew);
                     } else {
                         showFailedDialog(R.string.error_file_creation);
@@ -1051,11 +1043,7 @@ public class DownloadDialog extends DialogFragment
         if (checkedId3 == R.id.audio_button) {
             kind = 'a';
             selectedStream = audioStreamsAdapter.getItem(selectedAudioIndex);
-// NicoNico support removed – YouTube only
-                psName = Postprocessing.NICONICO_MUXER;
-            } else if (selectedStream.getFormat() == MediaFormat.M4A && currentInfo.getService() != ServiceList.YouTube) {
-                psName = Postprocessing.ALGORITHM_M4A_NO_DASH;
-            } else if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
+            if (selectedStream.getFormat() == MediaFormat.WEBMA_OPUS) {
                 psName = Postprocessing.ALGORITHM_OGG_FROM_WEBM_DEMUXER;
             }
         } else if (checkedId3 == R.id.video_button) {
@@ -1069,11 +1057,7 @@ public class DownloadDialog extends DialogFragment
             if (secondary != null) {
                 secondaryStream = secondary.getStream();
 
-                if(currentInfo.getService() == ServiceList.YouTube) {
-                    psName = Postprocessing.BILIBILI_MUXER;
-                } else // NicoNico support removed – YouTube only
-                    psName = Postprocessing.NICONICO_MUXER;
-                } else {
+                {
                     if (selectedStream.getFormat() == MediaFormat.MPEG_4) {
                         psName = Postprocessing.ALGORITHM_MP4_FROM_DASH_MUXER;
                     } else {
