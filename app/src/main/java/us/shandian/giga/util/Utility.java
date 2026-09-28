@@ -18,7 +18,6 @@ import com.grack.nanojson.JsonParserException;
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.extractor.exceptions.ParsingException;
 import org.schabi.newpipe.extractor.exceptions.ReCaptchaException;
-import org.schabi.newpipe.extractor.services.bilibili.BilibiliService;
 import org.schabi.newpipe.streams.io.SharpStream;
 
 import java.io.BufferedOutputStream;
@@ -43,7 +42,6 @@ import org.schabi.newpipe.streams.io.StoredDirectoryHelper;
 import us.shandian.giga.get.DownloadMission;
 import org.schabi.newpipe.streams.io.StoredFileHelper;
 
-import static org.schabi.newpipe.extractor.services.bilibili.BilibiliService.WWW_REFERER;
 import static org.schabi.newpipe.streams.io.StoredDirectoryHelper.findFileSAFHelper;
 
 public class Utility {
@@ -326,20 +324,9 @@ public class Utility {
 
         return str + pad(s);
     }
-    public static void setRequestPropertyIfDownloadingBilibili(String url, HttpURLConnection conn) throws IOException {
-        if(BilibiliService.isBiliBiliDownloadUrl(url)){
-            // from header map set RequestProperty
-            Map<String, List<String>> headerMap = BilibiliService.getUserAgentHeaders(WWW_REFERER);
-            for (Map.Entry<String, List<String>> entry : headerMap.entrySet()) {
-                String key = entry.getKey();
-                List<String> value = entry.getValue();
-                if (value.size() == 1) {
-                    conn.setRequestProperty(key, value.get(0));
-                } else {
-                    conn.setRequestProperty(key, value.toString());
-                }
-            }
-        }
+    // BiliBili is not a supported service in this build.
+    public static void setRequestPropertyIfDownloadingBilibili(
+            final String url, final HttpURLConnection conn) {
     }
 
     public static void removeTempFileOfDownloadedVideo(StoredFileHelper storedFileHelper) {

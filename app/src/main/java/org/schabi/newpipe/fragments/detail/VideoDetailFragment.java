@@ -117,7 +117,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import static android.text.TextUtils.isEmpty;
 import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.COMMENTS;
 import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.SPONSORBLOCK;
-import static org.schabi.newpipe.extractor.services.bilibili.utils.isFirstP;
 import static org.schabi.newpipe.ktx.ViewUtils.animate;
 import static org.schabi.newpipe.ktx.ViewUtils.animateRotation;
 import static org.schabi.newpipe.player.helper.PlayerHelper.globalScreenOrientationLocked;
@@ -1217,9 +1216,7 @@ public final class VideoDetailFragment
 
         if (shouldShowSponsorBlock()) {
             final boolean isLiveStream = info.getStreamType() == StreamType.LIVE_STREAM;
-            if (isLiveStream
-                    || (info.getServiceId() == ServiceList.YouTube.getServiceId()
-                            && !isFirstP(info.getId()))) {
+            if (isLiveStream) {
                 // exclude for live streams or BiliBili multi-part videos
                 int index = pageAdapter.getItemPositionByTitle(SPONSOR_BLOCK_TAB_TAG);
                 if(index != -1){

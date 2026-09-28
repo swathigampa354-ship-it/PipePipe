@@ -30,7 +30,6 @@ import org.schabi.newpipe.extractor.ServiceList;
 import org.schabi.newpipe.extractor.StreamingService;
 import org.schabi.newpipe.extractor.downloader.Response;
 import org.schabi.newpipe.extractor.exceptions.ReCaptchaException;
-import org.schabi.newpipe.extractor.services.niconico.NiconicoService;
 import org.schabi.newpipe.extractor.services.youtube.ItagItem;
 import org.schabi.newpipe.extractor.services.youtube.dashmanifestcreators.CreationException;
 import org.schabi.newpipe.extractor.services.youtube.dashmanifestcreators.YoutubeOtfDashManifestCreator;
@@ -97,19 +96,6 @@ public interface PlaybackResolver extends Resolver<StreamInfo, MediaSource> {
                                             @C.ContentType final int type,
                                             @NonNull final PlayerMediaItem metadata) {
         final MediaSource.Factory factory;
-        if(sourceUrl.contains("live.nicovideo.jp/watch")){
-            factory = dataSource.getNicoLiveHlsMediaSourceFactory(sourceUrl);
-            return factory.createMediaSource(
-                    new MediaItem.Builder()
-                            .setTag(metadata)
-                            .setUri(Uri.parse(sourceUrl))
-                            .setLiveConfiguration(
-                                    new MediaItem.LiveConfiguration.Builder()
-                                            .setTargetOffsetMs(LIVE_STREAM_EDGE_GAP_MILLIS)
-                                            .build())
-                            .build()
-            );
-        }
         switch (type) {
             case C.CONTENT_TYPE_SS:
                 factory = dataSource.getLiveSsMediaSourceFactory();
@@ -530,29 +516,6 @@ public interface PlaybackResolver extends Resolver<StreamInfo, MediaSource> {
                         .setCustomCacheKey(cacheKey)
                         .build());
     }
-    private static <T extends Stream> MediaSource createNicoNicoMediaSource(
-            final T stream,
-            final StreamInfo streamInfo,
-            final PlayerDataSource dataSource,
-            final String cacheKey,
-            final PlayerMediaItem metadata) throws IOException{
-        String sourceUrl = stream.getContent();
-        MediaSource.Factory factory;
-        String additionalParam = URLDecoder.decode(sourceUrl.split("cookie=")[1]);
-        String cookie = additionalParam.split("&length=")[0];
-        String length = additionalParam.split("&length=")[1];
-        sourceUrl = sourceUrl.split("#cookie=")[0];
-        Uri uri = Uri.parse(sourceUrl);
-        factory = dataSource.getNicoMediaSourceFactory(cookie);
-        return factory.createMediaSource(
-                new MediaItem.Builder()
-                        .setTag(metadata)
-                        .setUri(uri)
-                        .setCustomCacheKey(cacheKey)
-                        .build()
-        );
-    }
-
     private static <T extends Stream> MediaSource createBiliBiliMediaSource(
             final T stream,
             final StreamInfo streamInfo,

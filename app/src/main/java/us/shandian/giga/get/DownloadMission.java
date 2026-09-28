@@ -8,7 +8,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import org.schabi.newpipe.DownloaderImpl;
-import org.schabi.newpipe.extractor.services.bilibili.BilibiliService;
 import org.schabi.newpipe.streams.io.StoredFileHelper;
 import us.shandian.giga.hls.state.HlsDownloadCheckpoint;
 import us.shandian.giga.postprocessing.Postprocessing;
@@ -232,7 +231,7 @@ public class DownloadMission extends Mission {
         }
         // Bilibili's edge nodes (M-CDN) may answer HEAD with 404,
         // emulate HEAD with a single byte range GET instead
-        final boolean headEmulation = headRequest && BilibiliService.isBiliBiliDownloadUrl(url);
+        final boolean headEmulation = false;
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setInstanceFollowRedirects(true);
         conn.setRequestProperty("User-Agent", DownloaderImpl.USER_AGENT);
